@@ -1,0 +1,52 @@
+CS102 SECTION 03 Hangman Game Homework
+
+BARTU ATABEK 21602229
+
+18.02.2017
+
+Approximately 1.5 - 2 HOURS spent
+
+STATUS: WORKING
+
+PROCESS
+- All the pieces of the program (the constructor, tryThis() method, chooseSecretWord() method & HangmanGame (main method)) chosen and put together to complete the Hangman class and the main method.
+ 
+- After organizing the pieces of the code when I first compiled the there were total of 18 compile errors occurred and the code was not working, so I started fixing.
+
+- The first thing I realized was the predefined wordlist in the properties which causes the chooseSecretWord() method and the Hangman constructor to give an error because in the chooseSecretWord() method there were already a word list.
+
+- I deleted the predefined final property wordlist from the properties.
+
+- In the homework notes it was stated that the constructor should set max allowed incorrect tries to 6 however, in both Hangman classes written by the groups max allowed incorrect tires was set a a final constant so it can’t be changed. Although I strongly agree that max allowed incorrect tries to be a constant, in order to be coherent with the homework notes I changed the property into a normal type.
+
+- All the get methods were set to return a String however the properties they set to return were StringBuffers. Error fixed by adding .toString() method at the end of the properties in the return statement.
+
+- There were two secretWord properties inside the class; one in the properties and one in the chooseSecretWord() method and the property in the method was defined as a String. The extra property inside the method was deleted.
+
+- chooseSecretWord() method was written as it would choose a random word from the array of Strings and therefore returns a string. In order to convert string to StringBuffer I used a constructor of the StringBuffer class and I initialized the secretWord variable inside the method.
+
+- In tryThis() method there was a mismatch in the parameter names so I changed them into the same word.
+
+- In the first tryThis() method I got the error char cannot be dereferenced because the they tried accessing the value referred to by a reference. Since a char is already a value (not a reference), it can not be dereferenced. So I fixed it by replacing the code with another version where indexOf() method was used.
+
+- With that all the compile errors were fixed however, when I run the program it crashed and gave a NullPointerException error.
+
+- I realized that in the constructor none of the StringBuffer properties were initialized so I initialized them.
+
+- The main method seem to be working until I realized that the secret word was printed with more stars than it should have or sometimes missing stars and no matter how many times a wrong letter entered the game wasn’t stopping nor declaring has won when the word is known by the user or lost and also remaining lives cannot be seen in the interface.
+
+- First I fixed the wrong star printing by changing the for loop and adding the string directly into the initialization of the secretWord and deleted the unnecessary star variable to be more efficient and I also deleted the Math.floor() method because it was unnecessary.
+
+- I realized that isGameOver() and hasLost() method wasn’t working correctly. It didn’t end the game after the secret word was guessed or didn’t end the game after all chances spent although within each wrong guess number of incorrect tries was successfully increased. Inside the hasLost() method I added an extra line of if statement to fix it. 
+
+- There main method had some mistakes in the UI and also their do while loop didn’t work correctly and states whether the game is lost or won. I added lines to declare the users status if tryThis() method returns -3 and also improved the UI and added remaining lives to notify the user since there’s no GUI.
+
+- I added the getSecretWord() method to be shown to the player when the game is lost.
+
+- I added a second chooseSecretWord() method where the words are inside a text file on the computer. If anyone chooses to use that method it will be ready to use.
+
+- I added another do-while loop for the user to decide if he/she wants to replay.
+
+- Finally I added proper Javadoc comments.
+
+- Hangman game works properly
